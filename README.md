@@ -55,9 +55,22 @@ Note: add the knexfile.js to the .gitignore file
 ## Why use migrations
 
 
-## Creating migration
+
+## Creating migrations
 
     knex migrate:make migration_name
+
+A new migration is added to the migrations folder.
+
+A migration has 2 parts:
+
+- up: modify the database schema
+- down: rollback the changes to the database schema
+
+Look up the Schema Builder in the documentation:
+(http://knexjs.org/#Schema)[http://knexjs.org/#Schema]
+
+
 
 
 

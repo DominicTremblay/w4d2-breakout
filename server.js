@@ -1,7 +1,5 @@
-const express = require(express);
+const config    = require('./knexfile');
+const env       = 'development';
+const knex      = require('knex')(config[env]);
 
-const app = express();
 
-app.listen(3000, () => {
-    console.log('App listening on port 3000!');
-  });

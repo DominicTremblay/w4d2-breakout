@@ -42,8 +42,10 @@ Note: add the knexfile.js to the .gitignore file
 
 ### Add knex config to your server
 
-    const config = require('./knexfile');
-    const env = 'development';
-    const knex = require('knex')(env);
+    const config    = require('./knexfile');
+    const env       = 'development';
+    const knex      = require('knex')(config[env]);
+
+    
 
 

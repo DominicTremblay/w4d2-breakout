@@ -38,5 +38,12 @@ The knexfile contains the database config. To create the knexfile in your projec
 
 Edit knexfile.js and add the database credentials.
 
+Note: add the knexfile.js to the .gitignore file
+
+### Add knex config to your server
+
+    const config = require('./knexfile');
+    const env = 'development';
+    const knex = require('knex')(env);
 
 

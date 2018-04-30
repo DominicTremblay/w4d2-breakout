@@ -30,6 +30,10 @@ You might want to also install knex globally to use the knex CLI:
 
     npm i -g knex
 
+Make sure Postgress is also installed:
+
+    npm i --save pg
+
 ### Create the knexfile
 
 The knexfile contains the database config. To create the knexfile in your project directory:
@@ -46,6 +50,15 @@ Note: add the knexfile.js to the .gitignore file
     const env       = 'development';
     const knex      = require('knex')(config[env]);
 
-    
+#2. Migrations
+
+## Why use migrations
+
+
+## Creating migration
+
+    knex migrate:make migration_name
+
+
 
 

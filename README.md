@@ -120,6 +120,22 @@ exports.down = function(knex, Promise) {
   ])
 };
 
+#3. Seeding
+
+## Why use seeding
+
+- In development, you need some data to work with.
+- For obvious reasons, the database can not be pushed to github. Each member of the team will work with its own local database. However, each individual still need to work with the same database content.
+- The database can be repopulated on demand
+
+To create a seed file:
+
+    knex seed:make name_of_seed_file
+
+Notes:
+- Seed files are executed in alpahbetical order
+- Execute seed files of tables representing the one side of the relationship first
+- Execute seed files of tables with foreign keys second
 
 
 

@@ -18,6 +18,7 @@ exports.up = function(knex, Promise) {
         table.increments('id').primary();
         table.integer('postId').references('posts');
         table.integer('userId').references('users');
+        table.timestamps();
       })
   ])
 };

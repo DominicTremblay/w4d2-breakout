@@ -54,7 +54,13 @@ Note: add the knexfile.js to the .gitignore file
 
 ## Why use migrations
 
+- It is used for version control of the database much like git is used for tracking changes in the code.
+- Migrations give the history of all changes made to the database schema.
+- Migrations are pushed to github so everyone is working with the same database schema.
 
+Note:
+- Don't modify a migration that's already pushed. Other developpers won't have the same changes.
+- Create a new migration instead. 
 
 ## Creating migrations
 
@@ -65,7 +71,23 @@ A new migration is added to the migrations folder.
 A migration has 2 parts:
 
 - up: modify the database schema
-- down: rollback the changes to the database schema
+- down: rollback the changes made to the database schema
+
+For example, a create table as the up should have a corresponding drop table as the down:
+
+    exports.up = function(knex, Promise) {
+        return knex.schema.createTable("users", table => {
+            table.increments('id');
+            table.string('first_name');
+            table.string('last_name');
+            table.string('email');
+            table.timestamps();
+        });
+    };
+
+    exports.down = function(knex, Promise) {
+        return knex.schema.dropTable("users")
+    };
 
 Look up the Schema Builder in the documentation:
 (http://knexjs.org/#Schema)[http://knexjs.org/#Schema]

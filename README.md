@@ -95,6 +95,30 @@ For example, a create table as the up should have a corresponding drop table as 
 Look up the Schema Builder in the documentation:
 (http://knexjs.org/#Schema)[http://knexjs.org/#Schema]
 
+### Migrations with multiple promises
+
+- create multiple tables in 1 migration file with Promise.all
+
+exports.up = function(knex, Promise) {
+  return Promise.all([
+      knex.schema.createTable("posts", table => {
+          ...
+      }),
+      knex.schema.createTable("comments", table => {
+          ...
+    }),
+      knex.schema.createTable("likes", table => {
+          ...
+  ])
+};
+
+exports.down = function(knex, Promise) {
+  return Promise.all([
+      knex.schema.dropTable('likes'),
+      knex.schema.dropTable('comments'),
+      knex.schema.dropTable('posts'),
+  ])
+};
 
 
 

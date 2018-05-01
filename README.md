@@ -17,8 +17,9 @@ Today's Objectives:
 - Knex is a query builder for Node that makes our life easier with object oriented syntax
 
 ## Why knex
-- Abstract the different implementations of SQL from MSSQL, MySQL, PostgreSQL, SQLite3, and Oracle
-- Provides migrations for updating our database schema
+- Abstract the different implementations of SQL from MSSQL, MySQL, PostgreSQL, SQLite3, and Oracle.
+- knex handles the sanitization of user input at the library level to prevent SQL injection.
+- Provides migrations for updating our database schema.
 
 ## Installing Knex
 
@@ -67,6 +68,8 @@ Note:
     knex migrate:make migration_name
 
 A new migration is added to the migrations folder.
+
+### Structure of a migration file
 
 A migration has 2 parts:
 

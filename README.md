@@ -9,8 +9,10 @@ Today's Objectives:
    - Why use migrations
    - Creating migration
 3. Seeding
-   - Why use seedfiles
-   - Creating seedfiles
+   - Why use seed files
+   - Creating seed files
+4. Executing Queries
+
 
 #1. What is knex
 
@@ -138,8 +140,32 @@ Notes:
 - Execute seed files of tables with foreign keys second
 - Use truncate() instead of del() to reset the autoincrements ids
 
+#.Executing Queries
 
+Look at the documentation about building queries:
+(http://knexjs.org/#Builder)[http://knexjs.org/#Builder]
 
+- You can execute knex queries as callbacks or promises
+- Using promises is more straightforward
 
+    knex
+    .select('first_name', 'last_name', 'email')
+    .from('users')
+    .then(result => {
+        console.log("results...");
+        console.log(result);
+    })
+    .catch(err => {
+      console.log(err);
+      return Promise.resolve();
+    })
+    .finally(() => {
+        console.log("kill connection");
+        knex.destroyed();
+    })
+
+Notes:
+- You need to explicitely kill the connection with knex.destroy
+- The results you get is an array of objects that you need to iterate over
 
 
